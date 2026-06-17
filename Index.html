@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Code Showcase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #ffd700;
+    }
+    pre {
+      background: #1e1e1e;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      border: 1px solid #333;
+      position: relative;
+    }
+    code {
+      color: #dcdcdc;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: 0.2s;
+    }
+    .copy-btn:hover {
+      background: #555;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AI Code Showcase</h1>
+
+  <!-- CAR GAME -->
+  <section>
+    <h2>Car Game</h2>
+    <pre>
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<code>WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Car Game")
+
+WHITE = (255, 255, 255)
+GRAY = (50, 50, 50)
+SKIN = (255, 220, 177)
+RED = (139, 0 ,0)
+BLACK = (0, 0, 0)
+YELLOW = (255, 255, 0)
+
+CAR_WIDTH, CAR_HEIGHT = 40, 70
+player_x = WIDTH // 2 - CAR_WIDTH // 2
+player_y = HEIGHT - CAR_HEIGHT - 20
+player_speed = 9
+
+ENEMY_WIDTH, ENEMY_HEIGHT = 50, 70
+enemy_speed = 20
+enemies = []
+
+score = 0
+font = pygame.font.SysFont("Arial", 28)
+
+clock = pygame.time.Clock()</code>
+    </pre>
+  </section>
+
+  <!-- FLAPPY BIRD -->
+  <section>
+    <h2>Scary Looking Flappy Bird</h2>
+    <pre>
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<code>import pygame
+import random
+
+pygame.init()
+
+WIDTH, HEIGHT = 400, 600
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Flappy Bird")
+
+WHITE = (255, 255, 255)
+YELLOW = (218, 165, 32)
+GREEN = (0, 200, 0)
+RED = (70, 0, 0)
+BLACK = (0, 0, 0)
+
+clock = pygame.time.Clock()
+
+background = pygame.image.load("skull.png")
+background = pygame.transform.scale(background, (WIDTH, HEIGHT))
+
+bird_x = 80
+bird_y = HEIGHT // 2
+bird_radius = 15
+bird_velocity = 2
+gravity = 0.5
+jump_strength = -8</code>
+    </pre>
+  </section>
+
+  <!-- AI CHAT BOT -->
+  <section>
+    <h2>AI Chat Bot</h2>
+    <pre>
+      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<code>import sys
+from dotenv import load_dotenv
+from huggingface_hub import InferenceClient, get_token
+
+load_dotenv()
+token = get_token()
+
+client = InferenceClient(api_key=token)
+completion = client.chat.completions.create(
+    model="moonshotai/Kimi-K2-Thinking",
+    messages=[{"role": "user", "content": "richest man in world"}],
+)
+
+message = completion.choices[0].message
+print(message.content)</code>
+    </pre>
+  </section>
+
+  <script>
+    function copyCode(button) {
+      const code = button.parentElement.querySelector("code").innerText;
+      navigator.clipboard.writeText(code);
+
+      button.innerText = "Copied!";
+      setTimeout(() => {
+        button.innerText = "Copy";
+      }, 1200);
+    }
+  </script>
+
+</body>
+</html>
